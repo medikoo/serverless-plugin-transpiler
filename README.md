@@ -38,5 +38,5 @@ module.exports = function (content, filePath) {
 
 ```yaml
 custom:
-  transpilerPath: "lib/transpile.js"
+  transpilerPath: lib/transpile.js
 ```
