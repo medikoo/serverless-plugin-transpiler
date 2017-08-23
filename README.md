@@ -15,7 +15,7 @@ plugins:
   - serverless-plugin-transpiler
 ```
 
-2. Configure _transpiler_ module, it should reside somewhere with your service.
+2. Configure _transpiler_ module, it should reside somewhere within your service.
 
 _Transpiler_ should be a function that on `content` (file contents) and `filePath` (full path to module)
 returns transpiled (if needed) content. Handling is as follows:
