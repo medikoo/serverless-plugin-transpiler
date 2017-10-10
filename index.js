@@ -1,9 +1,9 @@
 "use strict";
 
-const isCallable = require("es5-ext/object/is-callable")
-    , deferred   = require("deferred")
-    , path       = require("path")
-    , readFile   = require("fs2/read-file");
+const isPlainFunction = require("es5-ext/object/is-plain-function")
+    , deferred        = require("deferred")
+    , path            = require("path")
+    , readFile        = require("fs2/read-file");
 
 module.exports = class FileTransformer {
 	constructor(serverless) {
@@ -13,7 +13,7 @@ module.exports = class FileTransformer {
 		if (!transpilerPath) throw new Error("No file transpiler configuration found");
 		const transpile = require(path.resolve(serverless.config.servicePath, transpilerPath));
 
-		if (!isCallable(transpile)) throw new Error("Transpiler must be a function");
+		if (!isPlainFunction(transpile)) throw new Error("Transpiler must be a function");
 
 		const packagePlugin = serverless.pluginManager.plugins.find(
 			plugin => plugin.constructor.name === "Package"
