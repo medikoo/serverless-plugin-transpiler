@@ -2,9 +2,9 @@
 
 const isPlainFunction = require("es5-ext/object/is-plain-function")
     , isValue         = require("es5-ext/object/is-value")
-    , deferred        = require("deferred")
-    , path            = require("path")
-    , readFile        = require("fs2/read-file");
+    , BbPromise       = require("bluebird")
+    , fs              = BbPromise.promisifyAll(require("graceful-fs"))
+    , path            = require("path");
 
 module.exports = class FileTransformer {
 	constructor(serverless) {
@@ -21,9 +21,12 @@ module.exports = class FileTransformer {
 		);
 
 		packagePlugin.getFileContent = fullPath =>
-			readFile(fullPath)(content =>
-				deferred(transpile(String(content), fullPath))(
-					transpiledContent => isValue(transpiledContent) ? transpiledContent : content
-				));
+			fs
+				.readFileAsync(fullPath)
+				.then(content =>
+					BbPromise.resolve(transpile(content, fullPath)).then(
+						transpiledContent =>
+							isValue(transpiledContent) ? transpiledContent : content
+					));
 	}
 };
