@@ -1,6 +1,7 @@
 "use strict";
 
 const isPlainFunction = require("es5-ext/object/is-plain-function")
+    , isValue         = require("es5-ext/object/is-value")
     , deferred        = require("deferred")
     , path            = require("path")
     , readFile        = require("fs2/read-file");
@@ -22,7 +23,7 @@ module.exports = class FileTransformer {
 		packagePlugin.getFileContent = fullPath =>
 			readFile(fullPath)(content =>
 				deferred(transpile(String(content), fullPath))(
-					transpiledContent => transpiledContent || content
+					transpiledContent => isValue(transpiledContent) ? transpiledContent : content
 				));
 	}
 };
