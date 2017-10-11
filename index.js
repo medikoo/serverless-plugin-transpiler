@@ -6,7 +6,7 @@ const isPlainFunction = require("es5-ext/object/is-plain-function")
     , fs              = BbPromise.promisifyAll(require("graceful-fs"))
     , path            = require("path");
 
-module.exports = class FileTransformer {
+module.exports = class ServerlessPluginTranspiler {
 	constructor(serverless) {
 		const transpilerPath =
 			serverless.service.custom && serverless.service.custom.transpilerPath;
