@@ -1,5 +1,5 @@
 # serverless-plugin-transpiler
-## Transpile lambda files when packaging lambda
+## Transpile lambda files when packaging
 ## Plugin for Serverless v1
 
 ### Installation
