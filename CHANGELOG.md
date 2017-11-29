@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file. See [standa
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/medikoo/serverless-plugin-transpiler/compare/v1.0.0...v2.0.0) (2017-11-29)
 
+Rely on internal methods as introduced with Serverless v1.21
 
 ### Bug Fixes
 
