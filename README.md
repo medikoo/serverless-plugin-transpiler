@@ -1,6 +1,8 @@
 # serverless-plugin-transpiler
-## Transpile lambda files when packaging
-## Plugin for Serverless v1
+## Transpile lambda files during packaging step
+## Plugin for Serverless v1+
+
+Register a transpiler function which will serve as a file content transformer before they land in lambda package.
 
 ### Installation
 
